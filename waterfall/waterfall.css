@@ -1,0 +1,20 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+#container{position:relative;}
+.box{
+	padding:15px 15px 0 0;
+	/* float:left; */
+	position:absolute;
+}
+.pics{
+	border:1px solid #ccc;
+	padding:10px;
+	border-radius:5px;
+	box-shadow: 0 0 5px #ccc;
+}
+.pics img{
+	width:165px;
+	height:auto;
+}
