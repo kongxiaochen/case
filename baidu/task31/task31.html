@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task31</title>
+	<meta charset="utf-8">
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+	font-size:25px;
+}
+div,form{
+	width:700px;
+	margin:20px auto;
+}
+div{
+	margin-top:100px;
+}
+div label:first-child{
+	margin-left:80px;
+}
+div label:last-child{
+	margin-left:100px;
+}
+span{
+	margin-right:20px;
+}
+select{
+	border:2px solid #d2d2d2;
+	border-radius: 5px;
+}
+select:nth-child(2){
+	width:150px;
+}
+select:nth-child(3),select:nth-child(4),select:nth-child(5),select:nth-child(6){
+	width:250px;
+	margin-left:40px;
+}
+select:nth-child(4),select:nth-child(5),select:nth-child(6){
+	display:none;
+}
+#empForm{
+	display:none;
+}
+</style>
+</head>
+<body>
+<div>
+	<label><input type="radio" name="identity" value="1" checked id="stu">在校生</label>
+	<label><input type="radio" name="identity" id="emp">非在校生</label>
+</div>
+	<form id="stdForm">
+		<span>学校</span><select id="city"><option value="beijing">北京</option><option value="shanghai">上海</option><option value="chengdu">成都</option><option value="haerbin">哈尔滨</option></select>
+		                 <select id="univercity-beijing"><option>北京大学</option></select>
+		                 <select id="univercity-shanghai"><option>同济大学</option></select>
+		                 <select id="univercity-chengdu"><option>电子科技大学</option></select>
+		                 <select id="univercity-haerbin"><option>哈尔滨工业大学</option></select>
+
+	</form>
+	<form id="empForm">
+		<span>就业单位</span><input type="text">
+	</form>
+<script type="text/javascript" src="../public.js"></script>
+<script type="text/javascript" src="task31.js"></script>
+</body>
+</html>

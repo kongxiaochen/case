@@ -1,0 +1,34 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+.Num_input{
+    width:400px;
+    margin:20px auto;
+    overflow:hidden;
+}
+.Num_input input{
+	width:150px;
+	padding:5px;
+	margin:0 5px;
+	float:left;
+}
+#left_in,#right_in{
+	float:left;
+}
+#left_out,#right_out{
+	float:right;
+}
+.Num_block{
+	width:500px;
+	margin:10px auto;
+}
+.Num_block li{
+	list-style: none;
+	display:inline-block;
+	width:28px;
+	height:28px;
+	background-color:#d2d2d2;
+	text-align:center;
+	margin-right:5px;
+}

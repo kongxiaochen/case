@@ -1,0 +1,98 @@
+
+table{
+	width:500px;
+	text-align:center;
+	margin:10px auto;
+}
+thead th{
+    background-color:#000;
+    color:#fff;
+}
+tbody tr:nth-of-type(even) {
+	background-color:#999;
+}
+tbody tr:nth-child(n+4){
+	color:#bbb;
+}
+#myText{
+    margin:30px auto;
+    width:350px;
+    box-sizing: border-box;
+    text-align:center;
+}
+input{
+	width:200px;
+	border:2px solid #ddd;
+	box-shadow:5px 5px 5px #ddd;
+	transition:0.5s width;
+	text-align:center;
+
+}
+input:focus{
+	width:300px;
+	border-color:cornflowerblue;
+	box-shadow: 5px 5px 5px cornflowerblue;
+}
+
+
+.banner{
+	width:300px;
+	height:200px;
+	position:relative;
+	overflow: hidden;
+	margin: 10px auto;
+
+}
+.sliders{
+	margin:0px;
+	padding:0px;
+	border:0px;
+	width:900px;
+	height:100%;
+	position:relative;
+	transition: 0.5s left;
+	font-size: 0px;
+}
+.sliders li{
+	display:inline-block;
+	list-style: none;
+	width:300px;
+	height:200px;
+}
+.sliders li:nth-child(1){
+	background-color: red;
+}
+.sliders li:nth-child(2){
+	background-color: blue;
+}
+.sliders li:nth-child(3){
+	background-color: green;
+}
+.btns{
+	position:absolute;
+	right:0;
+	bottom:0;
+}
+.btns a{
+	display:inline-block;
+	text-decoration: none;
+	width:28px;
+	height:28px;
+	text-align: center;
+	opacity: 0.5;
+	font-size:16px;
+	background-color: #fff;
+}
+#slider-1:target~.sliders{
+	left:0;
+}
+#slider-2:target~.sliders{
+	left:-100%;
+}
+#slider-3:target~.sliders{
+	left:-200%;
+}
+img{
+	width:300px;
+	height:200px;
+}

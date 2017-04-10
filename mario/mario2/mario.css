@@ -1,0 +1,16 @@
+.gamediv{
+	width:500px;
+	height:400px;
+	position:absolute;
+}
+
+.gamediv img{
+	width:50px;
+	
+	position:absolute;
+}
+
+.controlcenter{
+	width:200px;
+	height:200px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<meta charset="utf-8">
+<script type="text/javascript">
+	var o={
+		prop:37,
+		f:function(){
+			return this;
+		}
+	};
+	console.log(o.f());
+	var p=Object.create(o);
+	p.b=2;
+	console.log(p.f());
+	var f1={
+		a:1,
+		get phase(){
+			return this;
+		}
+	};
+	var f2=Object.create(f1);
+	f2.c=4;
+	console.log(f1.phase);
+	console.log(f2.phase);
+
+	function MyClass(){
+		this.a=37;
+		this.e=function(){
+			return this;
+		}
+	}
+	var x=new MyClass();
+	console.log(x);
+
+	function bar(){
+		console.log(Object.prototype.toString.call(this));
+	}
+	bar.call(7);
+
+
+</script>
+<body></body>
+</html>

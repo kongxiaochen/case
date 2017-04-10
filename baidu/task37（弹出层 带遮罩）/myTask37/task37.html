@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task37</title>
+	<meta charset="utf-8">
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+	font-size:25px;
+	font-family:"微软雅黑";
+}
+body{
+	text-align:center;
+	width:100%;
+	height:100%;
+}
+#btnLogin{
+    width:200px;
+    height:35px;
+    border-radius:10px;
+    background-color: LightSlateGray ;
+    margin-top:50px;
+    color:#fff;
+}
+#divFloat{
+	text-align:left;
+	background-color: LightGoldenRodYellow;
+	border:2px solid blue;
+	border-radius: 10px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%) scale(0,0);
+    padding:20px;
+}
+#divFloat form{
+	text-align:right;
+}
+#divFloat form input{
+	width:90px;
+	color:#fff;
+	border-radius:10px;
+}
+#divFloat form input:first-child{
+	background-color: cornflowerblue;
+}
+#divFloat form input:last-child{
+	background-color: Aquamarine;
+}
+#mask{
+	position:fixed;
+	width:100%;
+    height:100%;
+/*    left:0;
+    top:0;*/
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	background-color: LightGrey;
+	opacity:0.7;
+	visibility:hidden;
+}
+</style>
+</head>
+<body>
+<input type="button" value="点击弹出" id="btnLogin">
+<div id="divFloat">
+<h1>这是一个弹出层</h1> 
+<p>这是一个弹出层，点击遮罩或者按钮关闭</br>
+按住标题处可以拖动</p>
+<form>
+<input type="button" value="确定" id="btnSure">
+<input type="button" value="取消" id="btnCancel">
+</form>
+</div>	
+<div id="mask">
+</div>
+<script type="text/javascript" src="public.js"></script>
+<script type="text/javascript" src="task37.js"></script>
+</body>
+</html>

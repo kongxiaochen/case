@@ -1,0 +1,26 @@
+<MKM version="2.0" imageFileUrl="file:///C:/Users/Administrator/Desktop/U+%e6%b2%b9%e5%85%ac%e4%bc%97%e5%8f%b7/%e6%9c%aa%e6%a0%87%e9%a2%98-2-%e6%81%a2%e5%a4%8d%e7%9a%84(1).jpg">
+  <Marks>
+    <LengthMark direction="3" color="16711680" length="26" x="103" y="128"/>
+    <LengthMark direction="3" color="16711680" length="26" x="29" y="180"/>
+    <LengthMark direction="3" color="16711680" length="78" x="293" y="128"/>
+    <LengthMark direction="3" color="16711680" length="76" x="354" y="206"/>
+    <LengthMark direction="3" color="16711680" length="26" x="116" y="256"/>
+    <LengthMark direction="3" color="16711680" length="26" x="118" y="206"/>
+    <LengthMark direction="3" color="16711680" length="1" x="99" y="282"/>
+    <LengthMark direction="3" color="16711680" length="20" x="203" y="493"/>
+    <LengthMark direction="12" color="16711680" length="24" x="127" y="323"/>
+    <LengthMark direction="12" color="16711680" length="52" x="99" y="549"/>
+    <LengthMark direction="12" color="16711680" length="77" x="73.75" y="703"/>
+    <LengthMark direction="3" color="16711680" length="62" x="331" y="743"/>
+    <LengthMark direction="3" color="16711680" length="259" x="330" y="877"/>
+    <LengthMark direction="12" color="16711680" length="160" x="480" y="845"/>
+    <LengthMark direction="12" color="16711680" length="160" x="0" y="841"/>
+    <TextMark defaultDirection="9" direction="9" color="16711680" x="126" y="166" textMaxWidth="100" offsetX="25" offsetY="10" text="苹方-粗体-26号"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="2236962" offsetX="25" offsetY="10" x="129" y="179"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="2236962" offsetX="25" offsetY="10" x="122" y="236"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="9474192" offsetX="25" offsetY="10" x="235" y="237"/>
+    <TextMark defaultDirection="9" direction="9" color="16711680" x="239" y="315" textMaxWidth="100" offsetX="25" offsetY="10" text="苹方-常规-26号"/>
+    <TextMark defaultDirection="9" direction="9" color="16711680" x="66" y="388" textMaxWidth="100" offsetX="25" offsetY="10" text="苹方-中等-26号"/>
+    <TextMark defaultDirection="9" direction="9" color="16711680" x="232" y="389" textMaxWidth="100" offsetX="25" offsetY="10" text="苹方-常规-26号"/>
+  </Marks>
+</MKM>

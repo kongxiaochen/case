@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task30</title>
+	<meta charset="utf-8">
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+}
+div{
+	width:700px;
+	margin:10px auto;
+	font-size:25px;
+}
+
+label{
+    width:100%;
+	font-weight: bold;
+   /* margin-right:20px;*/
+    text-align:right;
+    display:block;
+}
+input{
+    margin-left:20px;
+	width:500px;
+	height:50px;
+	border-radius: 10px;
+	border:1px solid #ccc;
+	float:right;
+    font-size:23px;
+    margin-top: 15px;
+}
+.note{
+	display:none;
+    margin-left: 20px;
+	font-size: 20px;
+    color:#ccc;
+}
+#btn{
+    float:right;
+    height:50px;
+    width:150px;
+    font-size: 25px;
+    background-color: #2F79BA;
+    border-radius:10px;
+    font-weight: bold;
+    color:#fff;
+}
+</style>
+</head>
+<body>
+     <div class="container">
+     <form>
+         <table >
+             <tr><td><label for="t1">名称</label></td><td><input type="text" id="t1"></td></tr>
+             <tr><td></td><td id="n1" class="note">必填，长度为4到16个字符</td></tr>
+             <tr><td><label for="t2">密码</label></td><td><input type="password" id="t2"></td></tr>
+             <tr><td></td><td id="n2" class="note">必填，长度为4到16个字符，只能使用数字字母和下划线</td></tr>
+             <tr><td><label for="t3">密码确认</label></td><td><input type="password" id="t3"></td></tr>
+             <tr><td></td><td id="n3" class="note">再次输入相同密码</td></tr>
+             <tr><td><label for="t4">邮箱</label></td><td><input type="text" id="t4"></td></tr>
+             <tr><td></td><td id="n4" class="note">请填写正确格式的邮箱</td></tr>
+             <tr><td><label for="t5">手机号码</label></td><td><input type="text" id="t5"></td></tr>
+             <tr><td></td><td id="n5" class="note">请填写正确的手机号码</td></tr>
+             <tr><td></td><td><input type="button" value="提交" id="btn"></td></tr>
+         </table>
+     </form>
+     </div>
+<script type="text/javascript" src="task30.js"></script>
+</body>
+</html>

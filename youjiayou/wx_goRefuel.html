@@ -1,0 +1,771 @@
+<!DOCTYPE HTML>
+<script type="text/javascript">
+	var ctx="http://wx.up-oil.com:80";
+	function goUrl(x){
+		window.location.href=x;
+	}
+</script>
+
+<head>
+<meta charset="UTF-8" />
+<title>优加油互联网+</title>
+<meta name="description" content="#" />
+<meta name="keywords" content="#" />
+<meta name="reply-to" content="" />
+<meta name="robots" content="index,follow" />
+<meta name="viewport" content=" width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="/logo_icon.png"  />
+<link rel="stylesheet" type="text/css" href="http://wx.up-oil.com:80/style/wx/css/base.css" />
+<link rel="stylesheet" type="text/css" href="http://wx.up-oil.com:80/style/wx/css/style.css" />
+<meta name="format-detection" content="telephone=no" />
+<style type="text/css">
+	.item-div{background: white; margin: 0px 0px 8px; line-height: 42px;font-size: 14px;}
+	.label{font-size: 16px; color: #666666; line-height: 52px; margin-left: 12px;}
+	#border-buttom{height: 100%;position: absolute;width: 100%;}
+</style>
+<body style="background-color: #ebebeb">
+<!--
+    <header class="common-top">
+        <hgroup style="position:relative;height:auto;width:100%;font:1rem/1.5rem '微软雅黑';text-align:center;margin:0 auto">
+            <span style="position:absolute;left:15px;z-index:22;top:-2pt">
+                <a href="javascript: history.back();" style="width:35px;height:17px;background:url(/style/wx/images/icon_back.png) no-repeat 0 0;background-size:15px;padding:2px;display:inline-block"></a>
+            </span>
+            <h2>优品加油互联网+</h2>
+            <span>
+                <a href="" style="position:absolute;right:15px;z-index:22;top:-2pt;width:35px;height:17px;background:url(/style/wx/images/icon_refresh.png) no-repeat 0 0;background-size:15px;padding:2px;display:inline-block"></a>
+            </span>
+        </hgroup>
+    </header>
+-->
+
+<!--内容-->
+<div class="main-wrap clearfix" style="margin-top: 0px;">
+    <section class="map-wrap">
+        <div style="background:url(/style/wx/images/refuel_title.jpg) no-repeat;height:110px; background-size: 100% 100%;">
+        </div>
+        <div style="display: none;">
+            <div id="mapContainer"></div>
+            <div class="-bg-opc">
+                <span class="-map-point"></span>
+            </div>
+         </div>
+        <div class="-platform-cont">
+            <div class="-cont-top item-div" style="line-height: 20px;border: 0px;">
+       
+                <label style="color: #666">油站：</label>
+                <dl class="-my-select" style="margin-left: -40px;text-align: center;">
+                    <dt id="show_dt"></dt>
+                    <dd>
+                        <ul id="ul_station">
+                        </ul>
+                    </dd>
+                </dl>
+
+            </div>
+            <div class="-cont-mid item-div" style="line-height: 16px;border: 0px;font-size:">
+                   
+                        <div class="input_phoneNum" style="padding:.4rem 1rem;">
+                            
+                            <input type="text" class="ipt -car-num" id="carnum" data-default="请输入手机号码" style="height: 26px; width:250px; ">
+                        </div>
+
+            <div class="input_code"  style="padding:.4rem 1rem;">
+				 <input type="text" class="ipt -car-num" id="carnum" data-default="请输入验证码" style="height: 26px;margin-left:1px;"> 
+				<span id="recommended" class="right"><input type="button" class="btn" style="width:130px; height:30px; margin-right:10px;float:right;" value="点击获取验证码"/></span>
+			</div>
+			</div>
+			<div id="border-buttom" class="item-div" style="border: 0px;min-height: 240px;">
+				<div class="content-div">
+					<div class="label" style="line-height: 40px;">请输入您消费的金额<span style="color: #3598dc;font-size: 14px">(仅支持加油站现场支付)</span></div>
+					<div class="input-div" style="padding-top:0px">
+						<div id="client">
+						<input type="number" name="money" id="money" placeholder='' value="" />
+						<label for="money">元</label>
+						</div>
+						<div class="div-choose">
+							<span class="radius div-choose-item" val='100'>100</span>
+							<span class="radius div-choose-item" val='200'>200</span>
+							<span class="radius div-choose-item" val='300'>300</span>
+						</div>
+					</div>
+				</div>
+				<div class="-cont-bot">
+                <p><a href="javascript:;" id="refuel-btn" class="btn">加油</a></p>
+				<!--  
+                <p><i></i>本次操作仅支持现场加油，团购加油<a href="###" class="refuel-link">点击此处</a></p>
+                -->
+            </div>
+            <div style="color: #3598dc; text-align: center;margin-top: -10px;font-size: 14px">
+    			<span>温馨提示：请在车内使用手机</span>
+    		</div>
+			</div>
+            
+           
+        </div>
+    </section>
+</div>
+<!---->
+<div id="show-box" class="undis">
+    <p class="box-msg">1公里内无合作加油站，请到站使用</p>
+    <a href="javascript:;" class="is-ok">知道了</a>
+</div>
+
+<script type="text/javascript" src="http://wx.up-oil.com:80/style/wx/js/jquery.js"></script>
+<script type="text/javascript" src="http://wx.up-oil.com:80/style/wx/js/base.js"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=c56e933158a557059dd549e7c3bd71e0"></script>
+<script type="text/javascript" src="http://wx.up-oil.com:80/style/wx/js/map_remote_search.js"></script>
+<script type="text/javascript">
+	$(".div-choose-item").click(function(){
+   		$(".div-choose-item").removeClass("choose-select");
+   		$(this).addClass("choose-select");
+   		$("#money").val($(this).attr('val'));
+   		console.log("ll");
+   	});
+</script>
+<script type="text/javascript">
+$(function(){
+	$("#border-buttom").css("height", $(window).height() - $("#re-img").offset().top- $("#re-img").height()- 5);
+})
+var map,start_xy,geolocation;
+//图片灰化
+function grayscale(src_path){  
+	try{
+		 var canvas = document.createElement('canvas');  
+	    var ctx = canvas.getContext('2d');  
+	    var imgObj = new Image();  
+	    imgObj.src = src_path;  
+	    canvas.width = imgObj.width;  
+	    canvas.height = imgObj.height;   
+	    ctx.drawImage(imgObj, 0, 0);   
+	    var imgPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);  
+	    for(var y = 0; y < imgPixels.height; y++){  
+	        for(var x = 0; x < imgPixels.width; x++){  
+	            var i = (y * 4) * imgPixels.width + x * 4;  
+	            var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;  
+	            imgPixels.data[i] = avg;   
+	            imgPixels.data[i + 1] = avg;   
+	            imgPixels.data[i + 2] = avg;  
+	        }  
+	    }  
+	    ctx.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);  
+	    return canvas.toDataURL();  
+	}catch(e){}
+	return '';
+} 
+$(function(){
+	//检测是苹果浏览器还是android浏览器，以便控制input的类型
+	var u = navigator.userAgent;
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+	var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	//alert(isAndroid);
+	if(isAndroid){
+		$("#client").html("");
+		$("#client").append("<input type='tel' name='money' id='money' placeholder='' value='' /><label for='money'>元</label>");
+	}else if(isIOS){
+		$("#client").html("");
+		$("#client").append("<input type='number' name='money' id='money' placeholder='' value='' /><label for='money'>元</label>");
+	}
+
+	
+	
+	$(".div-choose-item").click(function(){
+   		$(".div-choose-item").removeClass("choose-select");
+   		$(this).addClass("choose-select");
+   		$("#money").val($(this).attr('val'));
+   		console.log("ll");
+   	});
+   	
+   	var recommended = 1;
+	$("#re-img").click(function(){
+   		if(recommended == 1){
+   			recommended = 0;
+   			$("#re-img-img").attr("src", "/style/wx/images/ok_normal.png");
+   		}else{
+   			recommended = 1;
+   			$("#re-img-img").attr("src", "/style/wx/images/ok.png");
+   		}
+   	});
+   	function Trim(str,is_global)
+    {
+        var result;
+        result = str.replace(/(^\s+)|(\s+$)/g,"");
+        if(is_global.toLowerCase()=="g")
+        {
+            result = result.replace(/\s/g,"");
+         }
+        return result;
+	}
+	var stationId = "";
+	var gunId= "";
+	$("#refuel-btn").on("click",function(){
+		if(!stationId){
+			$(this).lightbox({
+                height:'auto',
+                type:'auto',
+                autoShow:true,
+                canClose:false,
+                title:'温馨提示',
+                contentId:'show-box',
+                boxClass:'lightBox show-box',
+                contentType:'inline',
+                onShow:function($stage, element, box){
+                    $(".box-msg").html('附近没有油站，请重新定位');
+                    $stage.find(".is-ok").bind("click",function(){
+                        box.close();
+                    });
+                }
+            });
+			return;
+		}
+		var oilType =$("#show_oilType").text();
+		
+		var oilGunId = $("#show_oilGun").text();
+		var carnum = $("#carnum").attr("value");
+		carnum = Trim(carnum,"g");
+		if(oilType == "请选择"){
+			$(this).lightbox({
+                height:'auto',
+                type:'auto',
+                autoShow:true,
+                canClose:false,
+                title:'温馨提示',
+                contentId:'show-box',
+                boxClass:'lightBox show-box',
+                contentType:'inline',
+                onShow:function($stage, element, box){
+                    $(".box-msg").html('请选择油号');
+                    $stage.find(".is-ok").bind("click",function(){
+                        box.close();
+                    });
+                }
+            }); 
+			return;			
+		}
+		if(oilGunId == "请选择"){
+			$(this).lightbox({
+                height:'auto',
+                type:'auto',
+                autoShow:true,
+                canClose:false,
+                title:'温馨提示',
+                contentId:'show-box',
+                boxClass:'lightBox show-box',
+                contentType:'inline',
+                onShow:function($stage, element, box){
+                    $(".box-msg").html('请选择枪号');
+                    $stage.find(".is-ok").bind("click",function(){
+                        box.close();
+                    });
+                }
+            }); 
+			return;			
+		}
+			var re=/^[\u4e00-\u9fa5]{1}[A-Z_a-z]{1}[A-Z_a-z_0-9]{5}$/;
+			if(carnum.search(re) == -1){
+				$(this).lightbox({
+	                height:'auto',
+	                type:'auto',
+	                autoShow:true,
+	                canClose:false,
+	                title:'温馨提示',
+	                contentId:'show-box',
+	                boxClass:'lightBox show-box',
+	                contentType:'inline',
+	                onShow:function($stage, element, box){
+	                    $(".box-msg").html('请填写正确车牌号');
+	                    $stage.find(".is-ok").bind("click",function(){
+	                        box.close();
+	                    });
+	                }
+	            }); 
+				return;			
+			}
+		//}
+		if(oilType == "93#(92#)"){
+			oilType = 2;
+		}else if(oilType == "97#(95#)"){
+			oilType = 3;
+		}else if(oilType == "98#"){
+			oilType = 4;
+		}else if(oilType == "0#"){
+			oilType = 5;
+		} 
+		
+		var money =$("#money").val();
+//		if(money == ""){
+//			money = 100;
+//		}
+   		if(money == "0" || money ==""){
+   			$(this).lightbox({
+                height:'auto',
+                type:'auto',
+                autoShow:true,
+                canClose:false,
+                title:'温馨提示',
+                contentId:'show-box',
+                boxClass:'lightBox show-box',
+                contentType:'inline',
+                onShow:function($stage, element, box){
+                    $(".box-msg").html('请重新填写支付金额');
+                    $stage.find(".is-ok").bind("click",function(){
+                        box.close();
+                    });
+                }
+            }); 
+			return;	
+   		}else{
+   			//AJAX请求是否有团购券
+   			//TODO
+   			$(".btn").attr("style", "opacity:0.6").attr("disabled","disabled");
+   			var url="/action/wx_payByOneKey";
+   			//alert(url);
+			$.post(url,{"id":stationId,"oilGunId":oilGunId,"oilType":oilType,"wxPay":money,"recommended":recommended,"carnum":carnum,"gunId":gunId},function(data){
+				var obj = data.jsonPay
+				if(data.status=="1" && obj.result =="success"){
+					if(money > 0 && obj.resultStr =="微信"){
+							WeixinJSBridge.invoke(
+							       'getBrandWCPayRequest', {
+							           "appId":obj.appId,     //公众号名称，由商户传入     
+							           "timeStamp": obj.timeStamp,         //时间戳，自1970年以来的秒数     
+							           "nonceStr": obj.nonceStr, //随机串     
+							           "package":  "prepay_id=" + obj.prepay_id,     
+							           "signType":"MD5",         //微信签名方式：     
+							           "paySign": obj.paySign //微信签名 
+							       },
+							       function(res){
+							    	// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+							           if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+							        	   location.href="/action/wx_refuelSuccess?id=" + stationId + "&userConsume.orderId=" + obj.orderId;
+							           }else{
+							           	   location.href="/action/wx_payFailed";
+							           }   
+							           
+							       }
+							);
+					}else if(money > 0 && obj.resultStr =="团购券"){
+						location.href ="/action/wx_goToChooseVoucher?id="+obj.mapId+"&oilType="+ obj.oilType
+								+"&oilGunId=" + obj.oilGunId + "&carnum="+ obj.carnum+"&money="
+								+ obj.money+ "&gunId=" + obj.gunId + "&recommended=" + recommended + "&payWay=" + obj.payWay;
+					}else{
+						//不需要微信支付
+					}
+				}else{
+					$(this).lightbox({
+		                height:'auto',
+		                type:'auto',
+		                autoShow:true,
+		                canClose:false,
+		                title:'温馨提示',
+		                contentId:'show-box',
+		                boxClass:'lightBox show-box',
+		                contentType:'inline',
+		                onShow:function($stage, element, box){
+		                	 $(".box-msg").html(data.msg ? data.msg : '请重新选择枪号');
+		                    $stage.find(".is-ok").bind("click",function(){
+		                        box.close();
+		                    });
+		                }
+		            }); 
+					$(".btn").attr("style", "opacity:1").removeAttr("disabled");
+					return;	
+				}
+			}); 
+   			//location.href ="http://wx.up-oil.com:80action/wx_goToChooseVoucher?id=&oilType=&oilGunId="
+   			//				+ "&carnum=&money=" + money+ "&gunId=";
+   		}
+		
+	});
+	var callBackStation = function(data){
+		$("#ul_station").html('');
+		//console.log(data);
+		if(data && data.datas && data.datas.length>0){
+			var item;
+			gunId = "";
+			for(var i =0, j=0; i<data.datas.length; i++){
+				item = data.datas[i];
+				//alert(item._name+":"+item.isCooperate);
+				if(item.isCooperate != '1'){continue;}
+				
+				if(j == 0) {$("#show_dt").text(item._name);stationId = item.mapId;}
+				j++;
+				$("#ul_station").append(
+						$("<li />").append(
+							$("<a href='#' id='"+item.mapId+"'>"+item._name+"</a>").click(function(){
+								stationId = $(this).attr("id");
+							$("#ul_oilGun").html('');
+							$("#show_oilType").text("请选择");
+							$("#show_oilGun").text("请选择");
+							$("#show_dt").text($(this).text()).trigger('click');
+							$.ajax({url:'/action/wx_findOilGunByStation?id=' + $(this).attr("id"),
+								success:function(gunList){
+									//console.log(gunList);
+									//按照油号分组
+									var oilType93 = new Array();
+									var oilType95 = new Array();
+									var oilType98 = new Array();
+									var oilType0 = new Array();
+									$("#ul_oilType").html('');
+									
+									if(gunList && gunList.length >0){
+										var gun;
+									//	$("#show_oilGun").text(""+gunList[0].oilGunId+"号枪");
+									//	$("#show_oilType").text(gunList[0].oilType);
+										for(var j=0;j<gunList.length;j++){
+											gun = gunList[j];
+											//console.log(gun);
+											if(gun.oilType == "2"){
+												oilType93.push(gun);
+											}
+											if(gun.oilType == "3"){
+												oilType95.push(gun);
+											}
+											if(gun.oilType == "4"){
+												oilType98.push(gun);
+											}
+											if(gun.oilType == "5"){
+												oilType0.push(gun);
+											}
+										}
+										//console.log(gun);
+										//初始化油号
+											$("#ul_oilType").append(
+													$("<li />").append(
+														$("<a href='#'>93#(92#)</a>").click(function(){
+															$("#show_oilType").text($(this).text()).trigger('click');
+															$("#show_oilGun").text("请选择");
+															$("#ul_oilGun").html('');
+															for(var index=0;index < oilType93.length; index++){
+																$("#ul_oilGun").append(
+																	$("<li />").append(
+																		$("<a href='#' val='"+oilType93[index].id +"'>"+oilType93[index].oilGunId +"号油枪</a>").click(function(){
+																			console.log($(this).attr("val"));
+																			gunId = $(this).attr("val");
+																			$("#show_oilGun").text($(this).text()).trigger('click');
+																		})
+																	)
+																);
+															}
+														})
+												)
+											);
+											$("#ul_oilType").append(
+													$("<li />").append(
+														$("<a href='#'>97#(95#)</a>").click(function(){
+															$("#show_oilType").text($(this).text()).trigger('click');
+															$("#show_oilGun").text("请选择");
+															$("#ul_oilGun").html('');
+															for(var index=0;index < oilType95.length; index++){
+																$("#ul_oilGun").append(
+																	$("<li />").append(
+																		$("<a href='#' val='"+oilType95[index].id +"'>"+oilType95[index].oilGunId +"号油枪</a>").click(function(){
+																			gunId = $(this).attr("val");
+																			$("#show_oilGun").text($(this).text()).trigger('click');
+																		})
+																	)
+																);
+															}
+															
+														})
+														
+													)
+												);
+											$("#ul_oilType").append(
+													$("<li />").append(
+														$("<a href='#'>98#</a>").click(function(){
+															$("#show_oilType").text($(this).text()).trigger('click');
+															$("#show_oilGun").text("请选择");
+															$("#ul_oilGun").html('');
+															for(var index=0;index < oilType98.length; index++){
+																$("#ul_oilGun").append(
+																	$("<li />").append(
+																		$("<a href='#' val='"+oilType98[index].id +"'>"+oilType98[index].oilGunId +"号油枪</a>").click(function(){
+																			gunId = $(this).attr("val");
+																			$("#show_oilGun").text($(this).text()).trigger('click');
+																		})
+																	)
+																);
+															}
+															
+														})
+														
+													)
+												);
+											$("#ul_oilType").append(
+													$("<li />").append(
+														$("<a href='#'>0#</a>").click(function(){
+															$("#show_oilType").text($(this).text()).trigger('click');
+															$("#ul_oilGun").html('');
+															$("#show_oilGun").text("请选择");
+															for(var index=0;index < oilType0.length; index++){
+																$("#ul_oilGun").append(
+																	$("<li />").append(
+																		$("<a href='#' val='"+oilType0[index].id +"'>"+oilType0[index].oilGunId +"号油枪</a>").click(function(){
+																			gunId = $(this).attr("val");
+																			$("#show_oilGun").text($(this).text()).trigger('click');
+																		})
+																	)
+																);
+															}
+															
+														})
+														
+													)
+												);
+										}
+								}	
+							});
+							}
+						)
+				));
+			}
+			
+			//初始化
+			item = data.datas[0];
+			if(stationId)
+			$.ajax({url:'/action/wx_findOilGunByStation?id=' + stationId,
+				success:function(gunList){
+					//console.log(gunList);
+					//按照油号分组
+					var oilType93 = new Array();
+					var oilType95 = new Array();
+					var oilType98 = new Array();
+					var oilType0 = new Array();
+					$("#ul_oilType").html('');
+					
+					
+					if(gunList && gunList.length >0){
+						var gun;
+					//	$("#show_oilGun").text(""+gunList[0].oilGunId+"号枪");
+					//	$("#show_oilType").text(gunList[0].oilType);
+						for(var j=0;j<gunList.length;j++){
+							gun = gunList[j];
+							//console.log(gun);
+							if(gun.oilType == "2"){
+								oilType93.push(gun);
+							}
+							if(gun.oilType == "3"){
+								oilType95.push(gun);
+							}
+							if(gun.oilType == "4"){
+								oilType98.push(gun);
+							}
+							if(gun.oilType == "5"){
+								oilType0.push(gun);
+							}
+						}
+						//console.log(gun);
+						//初始化油号
+							$("#ul_oilType").append(
+									$("<li />").append(
+										$("<a href='#'>93#(92#)</a>").click(function(){
+											$("#show_oilType").text($(this).text()).trigger('click');
+											$("#show_oilGun").text("请选择");
+											$("#ul_oilGun").html('');
+											for(var index=0;index < oilType93.length; index++){
+												$("#ul_oilGun").append(
+													$("<li />").append(
+														$("<a href='#' val='"+oilType93[index].id +"'>"+oilType93[index].oilGunId +"号油枪</a>").click(function(){
+															console.log($(this).attr("val"));
+															gunId = $(this).attr("val");
+															$("#show_oilGun").text($(this).text()).trigger('click');
+														})
+													)
+												);
+											}
+										})
+								)
+							);
+							$("#ul_oilType").append(
+									$("<li />").append(
+										$("<a href='#'>97#(95#)</a>").click(function(){
+											$("#show_oilType").text($(this).text()).trigger('click');
+											$("#show_oilGun").text("请选择");
+											$("#ul_oilGun").html('');
+											for(var index=0;index < oilType95.length; index++){
+												$("#ul_oilGun").append(
+													$("<li />").append(
+														$("<a href='#' val='"+oilType95[index].id +"'>"+oilType95[index].oilGunId +"号油枪</a>").click(function(){
+															gunId = $(this).attr("val");
+															$("#show_oilGun").text($(this).text()).trigger('click');
+														})
+													)
+												);
+											}
+											
+										})
+										
+									)
+								);
+							$("#ul_oilType").append(
+									$("<li />").append(
+										$("<a href='#'>98#</a>").click(function(){
+											$("#show_oilType").text($(this).text()).trigger('click');
+											$("#show_oilGun").text("请选择");
+											$("#ul_oilGun").html('');
+											for(var index=0;index < oilType98.length; index++){
+												$("#ul_oilGun").append(
+													$("<li />").append(
+														$("<a href='#' val='"+oilType98[index].id +"'>"+oilType98[index].oilGunId +"号油枪</a>").click(function(){
+															gunId = $(this).attr("val");
+															$("#show_oilGun").text($(this).text()).trigger('click');
+														})
+													)
+												);
+											}
+											
+										})
+										
+									)
+								);
+							$("#ul_oilType").append(
+									$("<li />").append(
+										$("<a href='#'>0#</a>").click(function(){
+											$("#show_oilType").text($(this).text()).trigger('click');
+											$("#ul_oilGun").html('');
+											$("#show_oilGun").text("请选择");
+											for(var index=0;index < oilType0.length; index++){
+												$("#ul_oilGun").append(
+													$("<li />").append(
+														$("<a href='#' val='"+oilType0[index].id +"'>"+oilType0[index].oilGunId +"号油枪</a>").click(function(){
+															gunId = $(this).attr("val");
+															$("#show_oilGun").text($(this).text()).trigger('click');
+														})
+													)
+												);
+											}
+											
+										})
+										
+									)
+								);
+						}
+					//初始化
+					$("#show_oilGun").text("请选择");
+					$("#ul_oilGun").html('');
+					var carnum ="";
+					if(carnum == ""){
+						$("#carnum").attr("value","川");
+					}else{
+						$("#carnum").attr("value","");
+					}
+					
+					if("false"){
+						$("#show_oilType").html("93#(92#)");
+						
+						for(var index=0;index < oilType93.length; index++){
+							$("#ul_oilGun").append(
+								$("<li />").append(
+									$("<a href='#' val='"+oilType93[index].id +"'>"+oilType93[index].oilGunId +"号油枪</a>").click(function(){
+										console.log($(this).attr("val"));
+										gunId = $(this).attr("val");
+										$("#show_oilGun").text($(this).text()).trigger('click');
+									})
+								)
+							);
+						}
+					}else if("false"){
+						$("#show_oilType").html("97#(95#)");
+						for(var index=0;index < oilType95.length; index++){
+							$("#ul_oilGun").append(
+								$("<li />").append(
+									$("<a href='#' val='"+oilType95[index].id +"'>"+oilType95[index].oilGunId +"号油枪</a>").click(function(){
+										gunId = $(this).attr("val");
+										$("#show_oilGun").text($(this).text()).trigger('click');
+									})
+								)
+							);
+						}
+					}else if("false"){
+						$("#show_oilType").html("98#");
+						for(var index=0;index < oilType98.length; index++){
+							$("#ul_oilGun").append(
+								$("<li />").append(
+									$("<a href='#' val='"+oilType98[index].id +"'>"+oilType98[index].oilGunId +"号油枪</a>").click(function(){
+										gunId = $(this).attr("val");
+										$("#show_oilGun").text($(this).text()).trigger('click');
+									})
+								)
+							);
+						}
+					}else if("false"){
+						$("#show_oilType").html("0#");
+						for(var index=0;index < oilType0.length; index++){
+							$("#ul_oilGun").append(
+								$("<li />").append(
+									$("<a href='#' val='"+oilType0[index].id +"'>"+oilType0[index].oilGunId +"号油枪</a>").click(function(){
+										gunId = $(this).attr("val");
+										$("#show_oilGun").text($(this).text()).trigger('click');
+									})
+								)
+							);
+						}
+					}
+				}	
+			});
+		}
+		if($("#show_dt").text() == ""){
+			$("#ul_station").html('<li><a href="javascript:" class="oil-station">1公里内无合作油站，请到站使用</a></li>');
+			$("#show_dt").text("1公里内无合作油站，请到站使用");
+		}
+	};
+	map = new AMap.Map("mapContainer", {
+		view: new AMap.View2D({
+			zoom: 18
+		})
+    });
+	map.plugin('AMap.Geolocation', function() {
+		geolocation = new AMap.Geolocation({
+			showButton : true, //显示定位按钮，默认：true
+			showCircle:false,
+			buttonPosition : 'RB', //定位按钮停靠位置，默认：'LB'，左下角
+			buttonDom: "<img src='http://wx.up-oil.com:80/style/wx/images/map/main_mylocation.png' style='width:36px;height:36px;bottom: 33px;position: absolute;right: 5px;cursor:pointer;' />"
+		});
+		map.addControl(geolocation);
+		geolocation.getCurrentPosition();
+	});
+	AMap.event.addListener(geolocation, 'complete', function(data){
+		start_xy  = data.position;
+		cloudSearch(map, start_xy, 5000, false, undefined, callBackStation);
+	});//返回定位信息
+	//添加地图类型切换插件
+	/*
+    map.plugin(["AMap.MapType"],function(){
+        //地图类型切换
+        var mapType= new AMap.MapType({
+            showRoad:true //叠加路网图层
+        });
+        map.addControl(mapType);
+    });
+	*/
+    //在地图中添加ToolBar插件
+    /*
+    map.plugin(["AMap.ToolBar"],function(){		
+		toolBar = new AMap.ToolBar();
+		map.addControl(toolBar);		
+	});
+	*/
+    $(".oil-station ").click(function(){
+        $(this).lightbox({
+            height:'auto',
+            type:'auto',
+            autoShow:true,
+            canClose:false,
+            title:'温馨提示',
+            contentId:'show-box',
+            boxClass:'lightBox show-box',
+            contentType:'inline',
+            onShow:function($stage, element, box){
+                $stage.find(".is-ok").bind("click",function(){
+                    box.close();
+                });
+             
+            }
+        }); 
+    });
+
+});
+   
+ </script>
+
+</body>
+</html>

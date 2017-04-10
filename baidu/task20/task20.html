@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>task20</title>
+<meta charset="utf-8"/>
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+}
+.in{
+	width:270px;
+	margin:10px auto;
+	overflow: hidden;
+}
+.in textarea,input{
+	width:200px;
+	float:left;
+	margin-bottom:10px;
+}
+input{
+	height:25px;
+}
+#insert,#search{
+	float:right;
+}
+.out{
+	width:270px;
+	margin:0 auto;
+}
+.out li{
+	list-style: none;
+	display:inline-block;
+	height:28px;
+	text-align:center;
+	background-color: #d2d2d2;
+	margin-right:5px;
+}
+.select{
+	background-color: red;
+}
+</style>
+
+</head>
+<body>
+<div class="in">
+<textarea rows="5" placeholder="请输入字符并用间隔符间隔" id="textArea"></textarea>
+<button id="insert">插入</button>
+<input type="text" id="keyWord"></input>
+<button id="search">查询</button>
+</div>
+
+<div class="out">
+<ul id="area">
+	<!-- <li>abc</li>
+	<li>def</li> -->
+</ul>
+</div>
+
+<script type="text/javascript">
+
+var $=function(el){
+  return document.querySelector(el);
+}
+var arrData=[];
+$("#insert").onclick=function(){
+	var str=$("#textArea").value.trim();
+	var arrWord=str.split(/[^0-9a-zA-Z\u4e00-\u9fa5]+/).filter(function(e){
+		if(e!=null&&e.length>0){return true;}else{return false;}
+	});
+	arrData=arrData.concat(arrWord);
+	render();
+}
+function render(key){
+   var aaa="";
+   for(var i=0;i<arrData.length;i++){
+   	aaa+="<li>"+arrData[i]+"</li>"
+   }
+   if(key!=null&&key.length>0){
+   	aaa=aaa.replace(new RegExp(key,"g"),"<span class='select'>"+key+"</span>");
+   }
+   $("#area").innerHTML=aaa;
+   $("#textArea").value="";
+   $("#textArea").focus();
+}
+$("#search").onclick=function(){
+	var key=$("#keyWord").value.trim();
+	console.log(key);
+	render(key);
+}
+
+</script>
+
+</body>
+</html>

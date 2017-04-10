@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  var arr=[1,4,[3,[4,5],7],6,0];
+  var arrNew=[];
+  function flat(arr){
+  	var d;
+    for(var i=0; i<arr.length; i++){
+    	d=arr[i];
+    	if(typeof d==='number'){
+           arrNew.push(d);
+    	}else{
+    		flat(d);
+    	}
+    }
+  }
+  flat(arr);
+  console.log(arrNew);
+</script>
+</body>
+</html>

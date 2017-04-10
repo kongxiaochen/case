@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+function mySort(){
+  var tags = new Array();
+  tags = Array.prototype.slice.apply(arguments);
+  var i = tags.length;
+  var temp = 0;
+  while(i>0){
+  	for (var j = 0; j < i-1; j++) {
+  		if(tags[j]>tags[j+1]){
+  			temp = tags[j];
+  			tags[j]=tags[j+1];
+  			tags[j+1]=temp;
+  		}
+  	}i--;
+  }
+  return tags;
+}
+var result = mySort(50,11,16,32,24,99,57,100);
+console.log(result);
+	</script>
+</body>
+</html>

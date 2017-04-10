@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<link href ="changebackground.css" type="text/css" rel="stylesheet">
+
+<script language=javascript type=text/javascript>
+  
+  function changebd(eventObj){
+  	//访问CSS
+  	var ocssRules=document.stylesheets[0].cssRules; 
+  	var style1=ocssRules[0];
+       
+    if(eventObj.value=="黑色") {
+        style1.style.backgroundColor="black";
+    }else if(eventObj.value=="红色"){
+    	style1.style.backgroundColor="red";
+    }
+
+  }
+</script>
+
+</head>
+<body>
+<div id="div1" class="style1">background</div>
+<input type="button" value="黑色" onclick="changebd(this)">
+<input type="button" value="红色" onclick="changebd(this)">
+</body>
+</html>

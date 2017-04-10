@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" /> 
+<style type="text/css">
+	
+#text1{
+	text-align: right;
+}
+
+</style>
+</head>
+<body>
+<form>
+	<div>
+	<label for="baidu">
+	<input type="radio" id="baidu"  name="one" checked="checked" onClick="choose(0)"/>baidu</label>
+	<label for="google">
+	<input type="radio" id="google" name="one" onClick="choose(1)"/>google</label>
+   </div>
+</form>
+<form action="https://www.baidu.com/s" method="get" id="form1">
+
+<div>
+	<input type="text" name="wd" value=""  id="text1">
+	<input type="button" value="搜索" onClick="addkey()">
+</div>
+<div id="note"></div>
+</form>
+<script type="text/javascript">
+function choose(index){
+
+	var myform=document.getElementById("form1");
+	if(index==0){
+		myform.action="https://www.baidu.com/s"
+		document.getElementById("text1").name="wd";
+	}
+	else if(index==1){
+        myform.action="https://www.google.com.hk/search";
+         document.getElementById("text1").name="q";
+	}
+
+}
+function addkey(){
+    var mytext=document.getElementById("text1");
+
+    if(mytext.value==""){
+    	document.getElementById("note").innerHTML="<span style='color:red'>请输入查询内容</span>"
+    }else{
+    	form1.submit();
+    }
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>easyclock</title>
+<script language=javascript type=text/javascript>
+
+function clock(){
+	var date=new Date();
+	document.getElementById("mytime").value=date;
+}
+
+
+    var myclock=setInterval("clock()",1000);
+function restart(){
+    myclock=setInterval("clock()",1000);
+}    
+
+</script>
+
+</head>
+<body>
+<input type="text" id="mytime" size="35">
+<input type="button" value="开始时钟" onclick="restart()">
+<input type="button" value="停止时钟" onclick="clearInterval(myclock)">
+</body>
+</html> 

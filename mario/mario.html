@@ -1,0 +1,114 @@
+<html>
+<head>
+<!--引入css文件-->
+<meta charset="UTF-8">
+<link href ="mario.css" type ="text/css" rel="stylesheet">
+<script type="text/javascript">
+
+function Mario(){
+
+    var mymario=document.getElementById('mymario');
+	var left=mymario.style.left;
+	left=parseInt(left.substr(0,left.length-2));
+
+	var top=mymario.style.top;
+	top=parseInt(top.substr(0,top.length-2));
+
+	
+
+	//移动 
+	this.move=function(direct){
+    
+     if(left>=50&&left<=400&&top>=50&&top<=350){
+     switch(direct){
+            case 0:
+              //向上
+              mymario.style.top=(top-50)+"px";
+              top=top-50;
+              break;
+            case 1:
+              //向右
+              mymario.style.left=(left+50)+"px";
+              left=left+50;
+              break;
+            case 2:
+              //向下
+              mymario.style.top=(top+50)+"px";
+              top=top+50;
+              break;
+            case 3:
+              //向右
+              mymario.style.left=(left-50)+"px";
+              left=left-50;
+              break;
+            deflaut:
+            window.alert("错误！");
+              break;
+     }
+    }
+    else{window.alert("超出范围！")
+         if(left<50){ mymario.style.left=(left+50)+"px";}
+         else if(left>400){ mymario.style.left=(left-50)+"px";}
+         else if(top>350){ mymario.style.top=(top-50)+"px";}
+         else if(top<50){ mymario.style.top=(top+50)+"px";}
+     }
+
+    var mushroom=document.getElementById('mushroom');
+	var mushroom_left=mushroom.style.left;
+	mushroom_left=parseInt(mushroom_left.substr(0,mushroom_left.length-2));
+
+	var mushroom_top=mushroom.style.top;
+	mushroom_top=parseInt(mushroom_top.substr(0,mushroom_top.length-2));
+    
+    var x=Math.abs(left-mushroom_left);
+    var y=Math.abs(top-mushroom_top);
+    
+    
+    var xx=0;var yy=0;
+
+    if(top<mushroom_top){
+    	if(y<60){yy=1}
+    }else{
+    	if(y<50){yy=1}
+    }
+    if(left<mushroom_left){
+    	if(x<60){xx=1}
+    }else{
+    	if(x<50){xx=1}
+    }
+
+    if(xx==1&&yy==1){window.alert("mario吃到蘑菇了")}
+    
+
+	}
+}
+
+function marioMove(direct){
+	var mario=new Mario();
+	mario.move(direct);
+
+
+}
+
+
+     
+</script>
+
+</head>
+<body>
+<div class ="gamediv">
+  <img id="mymario" 
+       src="mario.png" 
+       style="width:60px;left:100px;top:100px;position:absolute "/>
+  <img id="mushroom"
+       src="mushroom.jpg"
+       style="width:50px;left:300px;top:250px;position:absolute;"/>
+</div>
+<table class="controlcenter">
+<tr><td colspan="3">控制方向</td></tr>
+<tr><td></td><td><input type ="button" value="↑" onclick="marioMove(0)"></td><td></td></tr>
+<tr><td><input type="button" value="←" onclick="marioMove(3)"/></td><td></td><td><input type="button" value="→" onclick="marioMove(1)"/></td></tr>
+<tr><td></td><td><input type="button" value="↓" onclick="marioMove(2)"/></td><td></td></tr>
+</table>
+</body>
+</html>

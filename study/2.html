@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	function main(x,y){
+	 var step=new Array();
+	 var i,j;
+	 for(i=0;i<y;i++){
+	 	step[i]=new Array();
+	 	step[0][i]=1;
+	 }
+	 for(i=0;i<x;i++){
+	 	step[i][0]=1;
+	 }
+	 step[0][0]=1;
+	 for(var i=1;i<x;i++){
+	 	for(var j=1; j<y; j++){
+	 		step[i][j]=parseInt(step[i-1][j])+parseInt(step[i][j-1]);
+	 	}
+	 }
+	 console.log(step[x-1][y-1]);
+	}
+	main(2,2);
+</script>
+	
+</body>
+</html>

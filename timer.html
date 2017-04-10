@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>timer</title>
+<script language=javascript type=text/javascript>
+
+var n=0;
+var t;
+function timer(){
+	document.getElementById("mytext").value=n;
+	n++;
+	t=setTimeout("timer()",1000);
+}
+
+function stoptimer(){
+	clearTimeout(t);
+	n=0;
+}
+
+</script>
+
+</head>
+<body>
+
+<input type="text" size=25 id="mytext">
+<br/>
+<input type="button" value="开始计时" onclick="timer()">
+<input type="button" value="停止计时" onclick="stoptimer()">
+
+</body>
+</html> 

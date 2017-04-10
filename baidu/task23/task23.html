@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>task23</title>
+<meta charset="utf-8">
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+}
+	.treeRoot{
+		display:flex;
+		width:1150px;
+		height:100px;
+		border:1px solid #000;
+		margin:50px auto;
+		padding:7px;
+		flex-flow: row nowrap;
+		align-content: center;
+	}
+	.level1,.level2,.level3,.level4{
+        display:flex;
+		border:1px solid #000;
+		padding:7px;
+		flex-flow: row nowrap;
+		align-content: center;
+	}
+	.search{
+        width:300px;
+        height:50px;
+        margin:0 auto;
+	}
+	.search input{
+        height:45px;
+        width:200px;
+        border:1px solid #d2d2d2;
+        border-radius: 10px;
+        font-size: 18px;
+	}
+	.search button{
+		height:45px;
+		border-radius: 10px;
+		background-color: #e74f4d;
+		color:#fff;
+		font-size: 18px;
+		padding:5px;
+		border:none;
+	}
+	.search button:hover{
+		background-color: #de0011;
+	}
+	.note{
+        width:500px;
+        text-align: center;
+        margin:10px auto;
+	}
+
+    .note span{
+
+	    color:red;
+	    font-size:20px;
+    }
+</style>
+</head>
+<body>
+<div class="tree">
+	<div class="treeRoot" id="super">Super
+		<div class="level1" id="culture">culture
+		  <div class="level2" id="history">history
+		     <div class="level3" id="American">American</div>
+		     <div class="level3"id="China">China</div>
+          </div>
+		  <div class="level2" id="future">future</div>
+		  <div class="level2" id="book">book
+		     <div class="level3">novel</div>
+		     <div class="level3">essay</div>
+		     <div class="level3">story</div>
+		     <div class="level3">paper</div>
+		  </div>
+		</div>
+		<div class="level1">language
+		  <div class="level2">Chinese
+		     <div class="level3">haerbin
+		       <div class="level4">daoli</div>
+		     </div>
+		    </div>
+		  <div class="level2">English
+		    </div>
+		</div>
+		<div class="level1">society</div>
+	</div>
+</div>
+
+<div class="search">
+	<input type="text" placeholder="请输入查询内容">
+	<button>前序搜索</button>
+</div>
+
+<div class="note">
+<span id="no"></span>
+<span id="yes"></span>
+</div>
+<script type="text/javascript" src="task23.js"></script>
+</body>
+</html>

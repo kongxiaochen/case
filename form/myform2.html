@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<style type="text/css">
+body{
+ font-family:Arial, Georgia, "Times New Roman", Times, serif;
+ font-size:12px;
+ color: #000;
+}
+div{
+ width:300px;
+ margin:10px;
+}
+span{
+ width:120px;
+ height:20px;
+ float:left;
+ text-align:right;
+}
+input{
+ width:150px;
+ height:20px;
+ border:#ddd 1px solid;
+ border-right:#f2f2f2 1px solid;
+ border-bottom:#f2f2f2 1px solid;
+ text-align:right;
+}
+select{
+ width:154px;
+ height:24px;
+ border:#ddd 1px solid;
+ border-right:#f2f2f2 1px solid;
+ border-bottom:#f2f2f2 1px solid;
+
+}
+#button1{
+ text-align:center;
+ width:80px;
+ margin:0 auto;
+ box-sizing:content-box;
+ display:block;
+ cursor:pointer;
+
+}
+#note span{
+	color:red;
+	width:300px;
+	font-size:18px;
+	text-align: center;
+}
+
+</style>
+<script type="text/javascript">
+function isDigit(a){
+	return(('0'<=a)&&(a<='9'));
+}
+function isAlpha(a){
+	return((('a'<=a)&&(a<='z'))||(('A'<=a)&&(a<='Z')));
+}
+	function checkform(){
+		var id=document.form1.id.value;
+		if(id==""){
+			document.getElementById("note").innerHTML="<span>请输入注册名！</span>";
+			document.form1.id.focus();
+            return false;}
+        for(nIndex=0;nIndex<id.length;nIndex++){
+        	var a=id.charAt(nIndex);
+        	if(!(a=='_'||isDigit(a)||isAlpha(a))){
+        		document.getElementById("note").innerHTML="<span>用户名只能是字母、数字或下划线！</span>";
+        		document.form1.id.value="";
+        		document.form1.id.focus();
+        		return false;
+        	}
+        }
+        var chineseid=document.form1.chineseid.value;
+        if(chineseid==""){
+			document.getElementById("note").innerHTML="<span>请输入中文昵称！</span>";
+			document.form1.chineseid.focus();
+            return false;}
+        var password=document.form1.password.value;
+        if(password==""){
+			document.getElementById("note").innerHTML="<span>请输入密码！</span>";
+			document.form1.password.focus();
+            return false;}
+        var password1=document.form1.password1.value;
+        if(password1==""){
+			document.getElementById("note").innerHTML="<span>请再次输入密码！</span>";
+			document.form1.password1.focus(); 
+            return false;}
+        if(password1!=password){
+        	document.getElementById("note").innerHTML="<span>两次密码不一致！请再次输入密码!</span>";
+        	document.form1.password.value="";
+        	document.form1.password1.value="";
+        	document.form1.password.focus();
+        	return false;}
+        var email=document.form1.email.value;
+        if(email==""){
+			document.getElementById("note").innerHTML="<span>请输入电子邮箱！</span>";
+			document.form1.email.focus();
+            return false;}
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+            isok= reg.test(email);
+            if(!isok){
+            document.getElementById("note").innerHTML="<span>电子邮箱格式错误，请重新输入！</span>";
+            document.form1.email.value="";
+			document.form1.email.focus();
+            return false;
+            }
+        var answer=document.form1.answer.value;
+        if(answer==""){
+			document.getElementById("note").innerHTML="<span>请输入密码提示问题回答！</span>";
+			document.form1.answer.focus();
+            return false;}
+        form1.submit();
+
+
+
+
+	}
+
+</script>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data" name="form1">
+	<div>
+	<span>
+	<lable for="id">注册名：</lable></span>
+	<input type="text" id="id" name="id" value="">
+	</div>
+	<div>
+	<span>
+	<lable for="chineseid">中文昵称：</lable></span>
+	<input type="text" id="chineseid" name="chineseid" value="">
+	</div>
+	<div>
+	<span>
+	<lable for="password">密码：</lable></span>
+	<input type="password" id="password" name="password" value="">
+	</div>
+	<div>
+	<span>
+	<lable for="password1">重复密码：</lable></span>
+	<input type="password" id="password1" name="password1" value="">
+	</div>
+	<div>
+	<span>
+	<lable for="email">电子邮箱：</lable></span>
+	<input type="text" id="email" name="email" value="">
+	</div>
+	<div>
+	<span>密码提示问题：</span>
+	<select id="checkask" name="checkask">
+	  <option value=1>你小学在哪里上的？</option>
+	  <option value=2>你第一个宠物的名字？</option>
+	  <option value=3>你初中班主任的名字？</option>
+	</select>
+	</div>
+	<div>
+	<span>
+	<lable for="answer">答案：</lable></span>
+	<input type="text" id="answer" name="answer" value="">
+	</div>
+	<div>
+	<input type="button" id="button1" value="提交" onclick="checkform()">
+	</div>
+	<div id="note"></div>
+</body>
+</html>

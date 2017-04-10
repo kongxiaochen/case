@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1
+{
+position: relative;
+height: 150px;
+width: 150px;
+margin: 50px;
+padding:10px;
+border: 1px solid black;
+perspective:150;
+-webkit-perspective:150; /* Safari and Chrome */
+transform-style: preserve-3d;
+}
+#div1:hover{
+transform: rotateY(180deg);
+-webkit-transform: rotateY(180deg); 
+}
+#div2
+{
+padding:50px;
+position: absolute;
+border: 1px solid black;
+background-color: blue;
+backface-visibility:hidden;
+
+
+}
+#div3
+{
+padding:50px;
+position: absolute;
+border: 1px solid black;
+background-color: yellow;
+transform: rotateY(180deg) translateZ(1px);
+-webkit-transform: rotateY(180deg) translateZ(1px); /* Safari and Chrome */
+backface-visibility:hidden;
+}
+</style>
+</head>
+
+<body>
+
+<div id="div1">
+  <div id="div2">front</div>
+  <div id="div3">back</div>
+</div>
+ 
+</body>
+</html>

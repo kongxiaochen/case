@@ -1,0 +1,19 @@
+<html>
+<head>
+	<script>
+		function change(x){
+			document.getElementById(x).style.backgroundColor="yellow";
+		}
+		function recover(x){
+			document.getElementById(x).style.backgroundColor="white";
+		}
+		function test1(){window.alert("hello")}
+		function test2(){window.alert("byebye")}
+	</script>
+</head>
+<body onload="test1()" >
+First name: <input type="text" onmouseover="change(this.id)" onmouseout="recover(this.id)" id="text1" />	
+<br/>
+Last name:  <input type="text" onmouseover="change(this.id)" onmouseout="recover(this.id)" id="text2"/>	
+</body>
+</html>

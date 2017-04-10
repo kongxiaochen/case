@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+
+body{
+	font-family:"微软雅黑";
+	font-size:15px;
+	padding:20px;
+	margin:0px;
+}
+#all{
+	padding:20px;
+    background-color: #eee;
+    overflow: hidden;       /*神奇   浮动元素在div中时div大小随浮动元素大小变化*/
+    min-width: 600px;
+}
+img{
+	width:80px;
+	height:80px;
+}
+#name{
+	background-color:#fff;
+	padding:20px;
+	float:left;
+	width:200px;
+	box-sizing:border-box;
+}
+#name img{
+	float:left;
+}
+#introduce{
+	background-color:#fff;
+	padding:20px;
+	margin-left: 220px;
+	margin-right:140px;
+}
+#member{
+	background-color:#fff;
+	float:right;
+	width:120px;
+	box-sizing:border-box;
+}
+#member img{
+    margin:20px;
+    display:block;     /*合并外边距*/
+}
+</style>
+</head>
+<body>
+<div id="all">
+
+	<div id="name">
+		<img src="fig1.jpg"/><span>团队名称</span>
+	</div>
+	<div id="member">
+		<img src="fig1.jpg"/><img src="fig1.jpg"/><img src="fig1.jpg"/>
+	</div>
+	<div id="introduce"></div>
+
+</div>
+</body>
+</html>

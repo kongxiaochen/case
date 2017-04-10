@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>task21</title>
+<meta charset="utf-8"/>
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+.tag_in{
+	width:300px;
+    margin:10px auto;
+}
+.tag_in input{
+	margin-left:15px;
+	font-size: 15px;
+}
+.tag_in input:focus{
+	box-shadow: 0px 0px 5px cornflowerblue;
+}
+.tag_out{
+	width:300px;
+    margin:10px auto;
+}
+.tag_out li{
+	list-style: none;
+	display:inline-block;
+	height:28px;
+	background-color: cornflowerblue;
+	color:#fff;
+	margin-right: 5px;
+
+}
+.tag_out li:hover{
+	background-color: #ff3366;
+}
+.hobby_in{
+	width:300px;
+    margin:10px auto;
+}
+.hobby_in input{
+	display:block;
+	font-size: 15px;
+}
+.hobby_in textarea{
+	font-size: 15px;
+	width:250px;
+}
+.hobby_out{
+	width:300px;
+    margin:10px auto;
+}
+.hobby_out li{
+	list-style: none;
+	display:inline-block;
+	height:28px;
+	background-color: #FFCB87;
+	color:#fff;
+	margin-right:5px;
+	margin-bottom: 5px;
+}
+</style>
+
+</head>
+<body>
+<div class="tag_in">
+<span>Tag:</span><input type="text" id="tagInput"/>	
+</div>
+<div class="tag_out">
+<ul id="tagShow">
+	<!--<li>HTML5</li>
+	<li>JavaScript</li>
+	<li>CSS</li>-->
+</ul>	
+</div>
+
+<div class="hobby_in">
+<textarea placeholder="请添加兴趣爱好" rows=5 id="hobbyInput"></textarea>
+<input type="button" value="确认兴趣爱好" id="confirm">
+</div>
+<div class="hobby_out">
+<ul id="hobbyShow">
+    <!--<li>游泳</li>
+	<li>瑜伽</li>
+	<li>摄影</li>-->
+</ul>
+</div>
+
+
+<script type="text/javascript">
+var $=function(el){
+   return document.querySelector(el);
+}
+
+function list(input,show){
+	this.input=input;
+	this.show=show;
+	this.arr=[];
+	this.maxlen=10;
+}
+list.prototype.pushData=function(d){
+	if(d.length<=0||this.arr.indexOf(d)>=0){
+		return;
+	}
+	this.arr.push(d);
+	if(this.arr.length>this.maxlen){
+        this.arr.shift();
+	}
+	console.log(this.arr);
+	this.render();
+}
+list.prototype.deleteData=function(ele){
+    var index=this.arr.indexOf(ele.innerHTML);
+    console.log(index);
+    this.arr.splice(index,1);
+    this.render();
+}
+list.prototype.render=function(){
+	this.show.innerHTML=this.arr.map(function(d){
+		return "<li>"+d+"</li>";
+	}).join("");
+}
+
+var tagInput=$("#tagInput");
+var tagShow=$("#tagShow");
+var hobbyInput=$("#hobbyInput");
+var hobbyShow=$("#hobbyShow");
+var confirm=$("#confirm");
+
+var taglist=new list(tagInput,tagShow);
+var hobbylist=new list(hobbyInput,hobbyShow);
+
+tagInput.addEventListener("keyup",function(e){
+	var str=this.value;
+	if(str.match(/[,.;，。；]$/)){
+        var tagWord=str.trim().slice(0,-1);
+		taglist.pushData(tagWord);
+		tagInput.value="";
+	}
+	if(e.keyCode===13){
+		var tagWord=str.trim();
+		taglist.pushData(tagWord);
+		tagInput.value="";
+	}
+})
+
+tagShow.addEventListener("mouseover",function(e){
+	if(e.target.tagName==="LI"){
+		var originHTML=e.target.innerHTML;
+		e.target.innerHTML="删除"+originHTML;
+		e.target.addEventListener("mouseout",function(){
+		e.target.innerHTML=originHTML;
+		})
+		e.target.addEventListener("click",function(){
+			e.target.innerHTML=originHTML;
+			taglist.deleteData(e.target);
+		})
+	}
+})
+
+confirm.addEventListener("click",function(){
+	var strHobby=hobbyInput.value.trim();
+	hobbyInput.value="";
+	var arr=strHobby.split(/[^0-9a-zA-Z\u4e00-\u9fa5]+/);
+	arr.map(function(d){
+		hobbylist.pushData(d);
+	})
+
+})
+
+</script>
+
+</body>
+</html>

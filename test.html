@@ -1,0 +1,31 @@
+<script>
+ function arraysSimilar(arr1, arr2){
+          if(!Array.isArray(arr1)||!Array.isArray(arr2)||arry1.length!=arr2.length){return false;}
+          var arr3=[];
+          var arr4=[];
+          for(var i in arr1){
+              arr3.push(Object.prototype.toString.apply(arr1[i]));
+              arr4.push(Object.prototype.toString.apply(arr2[i]));
+          }
+          if(arr3.sort().toString()==arr4.sort().toString()){return true;}else{return false;}
+        }
+
+
+          function type(a){
+            return  a === null ? '[object Null]':Object.prototype.toString.apply(a); //hack ie678
+        }
+        function arraysSimilar(arr1, arr2){
+            if(!Array.isArray(arr1) || !Array.isArray(arr2) ||arr1.length!=arr2.length){return false;}
+            var arr3=[];
+            var arr4=[];
+            var x;
+            for(var i in arr1){
+                arr3.push(type(arr1[i]));
+                arr4.push(type(arr2[i]));
+            }
+            if(arr3.sort().toString()==arr4.sort().toString()){
+                return true;
+            }else{
+                return false;
+            }
+        }

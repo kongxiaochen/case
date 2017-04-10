@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <title>优加油互联网+</title>
+    <meta name="description" content="#" />
+    <meta name="keywords" content="#" />
+    <meta name="reply-to" content="" />
+    <meta name="robots" content="index,follow" />
+    <meta name="viewport" content=" width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no"/>   <!--手机号码不显示为拨号的超链接-->
+    <link rel="stylesheet" type="text/css" href="youjiayou.css"></style>
+</head>
+<body style="background-color: #ebebeb">
+<section class="map-wrap" style="height:240px">
+	<div style="background:url() no-repeat;height:110px;width:100%; background-size: 100% 100%;"></div>
+	<div id="station">
+		<lable style="color: #666">油站:</lable>
+		<dl id="class_select" style="margin-left: -40px;text-align: center;">
+			<dt id="show_dt">lalala</dt>
+                    <dd id="show_dd">
+                        <ul id="ul_station">
+                          
+                        </ul>
+                    </dd>
+		</dl>
+	</div>
+	<div id="phone_test">
+		<input type="text" id="phone_Num" placeholder="请输入手机号码">
+	</div>
+	<div id="return_code">
+		<input type="text" id="input_Code" placeholder="请输入验证码">
+		<input type="button" id="get_Code" value="点击获取验证码">
+	</div>
+</section>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+     $("#class_select").click(function(){
+     	$.ajax({
+     		type:"GET",
+     		url:"http://wxoa.u-coupon.cn/Weixin/station/city.do",
+     		dataType:"jsonp",
+     		jsonp:"callback",
+     		success:function(data){
+     			if(data.code=="1"){
+     				$("#show_dt").html(data.data.station_name);
+     			}else{
+     				$("#show_dt").html("一公里内无可用油站");
+     			}
+     		},
+     		error:function(jqXHR){
+     			alert("发生错误:"+jqXHR.status);
+     		}
+
+     	})
+     });
+});
+	
+
+	
+</script>
+</body>
+</html> 

@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script language=javascript type=text/javascript>
+ 
+ function changebd(eventObj){
+    
+    var div=document.getElementById("div1");
+    if(eventObj.value=="黑色") {
+    	div.style.backgroundColor="black";
+    }else if(eventObj.value=="红色"){
+    	div.style.backgroundColor="red";
+    }
+
+ }
+
+</script>
+
+</head>
+<body>
+<div id="div1" style="height:300px;width:400px;background-color:blue">background</div>
+<input type="button" value="黑色" onclick="changebd(this)">
+<input type="button" value="红色" onclick="changebd(this)">
+</body>
+</html>

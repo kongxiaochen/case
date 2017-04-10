@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TEst</title>
+</head>
+<body>
+
+<div>
+   <input type="button" id ="button1" value="1" />
+   <input type="button" id ="button2" value="2" />
+   <input type="button" id ="button3" value="3" />
+</div>
+
+<script type="text/javascript">
+    var btn1 = document.getElementById('button1');
+    var btn2 = document.getElementById('button2');
+    var btn3 = document.getElementById('button3');
+    
+
+
+    addListener(btn1, 'click', function (event) {
+        btn1.parentNode.insertBefore(btn1, btn3);
+    });
+
+    function addListener(elem, type, handler) {
+        if (elem.addEventListener) {
+            elem.addEventListener(type, handler, false);
+            return handler;
+        } else if (elem.attachEvent) {
+            function wrapper() {
+                var event = window.event;
+                event.target = event.srcElement;
+                handler.call(elem, event);
+            }
+            elem.attachEvent('on' + type, wrapper);
+            return wrapper;
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.gamediv{
+	width:500px;
+	height:400px;
+	background:pink;
+
+}
+/*表格样式*/
+.controlcenter{
+	width:200px;
+	height:200px;
+	border:1px;
+}

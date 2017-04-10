@@ -1,0 +1,24 @@
+<MKM version="2.0" imageFileUrl="file:///C:/Users/Administrator/Desktop/U+%e6%b2%b9%e5%85%ac%e4%bc%97%e5%8f%b7/%e5%be%ae%e4%bf%a1%e5%85%ac%e4%bc%97%e5%8f%b7%e9%a1%b5%e9%9d%a2%20-%20%e5%87%ad%e8%af%81%e9%a1%b5%e9%9d%a2.jpg">
+  <Marks>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="15658734" offsetX="25" offsetY="10" x="116" y="142"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="1687359" offsetX="25" offsetY="10" x="322" y="282"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="4709994" offsetX="25" offsetY="10" x="332" y="190"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="3067220" offsetX="25" offsetY="10" x="362" y="239"/>
+    <LengthMark direction="3" color="16711680" length="32" x="557" y="128"/>
+    <LengthMark direction="12" color="16711680" length="24" x="616" y="268"/>
+    <LengthMark direction="12" color="16711680" length="24" x="0" y="348"/>
+    <LengthMark direction="12" color="16711680" length="246" x="370" y="257"/>
+    <LengthMark direction="12" color="16711680" length="246" x="24" y="257"/>
+    <LengthMark direction="3" color="16711680" length="48" x="113" y="368"/>
+    <LengthMark direction="12" color="16711680" length="24" x="150" y="354"/>
+    <LengthMark direction="12" color="16711680" length="76" x="98" y="868"/>
+    <LengthMark direction="12" color="16711680" length="50" x="124" y="1013"/>
+    <LengthMark direction="12" color="16711680" length="24" x="24" y="423"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="16777215" offsetX="25" offsetY="10" x="109" y="183"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="1842204" offsetX="25" offsetY="10" x="374" y="101"/>
+    <TextMark defaultDirection="9" direction="9" color="16711680" x="198" y="348" textMaxWidth="100" offsetX="25" offsetY="10" text="苹方-中等-26点"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="9474192" offsetX="25" offsetY="10" x="325" y="351"/>
+    <ColorMark defaultDirection="9" direction="9" color="16711680" targetColor="65793" offsetX="25" offsetY="10" x="94" y="345"/>
+    <TextMark defaultDirection="9" direction="9" color="16711680" x="132" y="419" textMaxWidth="100" offsetX="25" offsetY="10" text="苹方-中等-26点"/>
+  </Marks>
+</MKM>

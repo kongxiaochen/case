@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>exercise</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var days=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+		var date=new Date();
+		console.log("今天是"+days[date.getDay()]);
+	</script>
+
+	<script type="text/javascript">
+		for(var i=0; i<5; i++){
+			(function(i){
+				setTimeOut(function(){
+					console.log(i+'');
+				},500);
+			}(i));
+		}
+	</script>
+</body>
+</html>

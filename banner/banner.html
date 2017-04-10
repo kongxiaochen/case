@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carousel Imooc Demo</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <style>
+    @charset "utf-8";
+    /* CSS Document */
+    
+    html,
+    body {
+        margin: 0;
+        padding: 0
+    }
+    
+    a {
+        color: #14191e;
+        text-decoration: none;
+        outline: none;
+        cursor: auto;
+        font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+    }
+    
+    .g-banner {
+        position: relative;
+        height: 600px;
+        overflow: hidden
+    }
+    
+    .g-banner .banner-anchor {
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+        width: 80px;
+        height: 100px;
+        overflow: hidden;
+        opacity: 0;
+        text-indent: -90em;
+        background-image: url(banner_sprite.png);
+        background-repeat: no-repeat;
+        transition: transform .6s, opacity .6s
+    }
+    
+    .g-banner .prev {
+        left: 0;
+        transform: translateX(-100%);
+        background-position: 0 -41px
+    }
+    
+    .g-banner .prev:hover,
+    .g-banner .next:hover {
+        opacity: 1
+    }
+    
+    .g-banner .prev:hover {
+        background-position: -81px -41px
+    }
+    
+    .g-banner .next {
+        right: 0;
+        transform: translateX(100%);
+        background-position: 0 -142px
+    }
+    
+    .g-banner .next:hover {
+        background-position: -81px -142px
+    }
+    
+    .g-banner:hover .banner-anchor {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible
+    }
+    
+    .g-banner .banner-slide {
+        position: absolute;
+        display: none;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-repeat: no-repeat;
+        background-position: center 0
+    }
+    
+    .g-banner .banner-slide .more {
+        position: absolute;
+        right: 80px;
+        top: 360px;
+        height: 14px;
+        line-height: 14px;
+        padding-left: 21px;
+        font-weight: 700;
+        background: url(img/banner_sprite.png) no-repeat -120px 0
+    }
+    
+    .g-banner .banner-slide .more:hover {
+        color: #14191e;
+        opacity: .75;
+        filter: alpha(opacity=75)
+    }
+    
+    .g-banner .inner {
+        position: relative;
+        width: 1200px;
+        margin: 0 auto
+    }
+    
+    .g-banner .banner-dots {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        text-align: center
+    }
+    
+    .g-banner .banner-dots span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 5px;
+        background-color: #0cf;
+        transition: transform .2s;
+        cursor: pointer
+    }
+    
+    .g-banner .banner-dots span:hover {
+        transform: scale(1.1)
+    }
+    
+    .g-banner .banner-dots .active {
+        background-color: #fff;
+        transform: scale(1.1)
+    }
+    
+    .g-banner .click-help {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0
+    }
+    
+    .g-banner .banner-tit {
+        display: none
+    }
+    </style>
+</head>
+
+<body>
+    <div class="g-banner">
+        <div class="g-banner-content">
+            <div class="banner-slide slide-active" style="background-image: url(http://www.imooc.com/static/img/index/banner2.jpg)">
+                <a href="javascript:;" class="click-help"></a>
+                <div class="inner">
+                    <h3 class="banner-tit"></h3>
+                    <a href="javascript:;" class="more">了解更多</a>
+                </div>
+            </div>
+            <div class="banner-slide" style="background-image: url(http://img.mukewang.com/57216d6a0001e14720000600.jpg)">
+                <a href="javascript:;" class="click-help"></a>
+                <div class="inner">
+                    <h3 class="banner-tit">为你专属定制</h3>
+                </div>
+            </div>
+            <div class="banner-slide" style="background-image: url(http://img.mukewang.com/570668da0001874d20000600.jpg)">
+                <a href="javascript:;" class="click-help"></a>
+                <div class="inner">
+                    <h3 class="banner-tit">实战课程</h3>
+                </div>
+            </div>
+        </div>
+        <div class="banner-dots"></div>
+        <a href="javascript:;" class="banner-anchor prev">上一张</a>
+        <a href="javascript:;" class="banner-anchor next">下一张</a>
+    </div>
+    <script src="../jquery-3.0.0.js"></script>
+    <script>
+    // 首页轮播图-渐变
+    (function() {
+        var banner = $('.g-banner'),  // banner
+            slides = banner.find('.banner-slide'),  // slide集合
+            dotContainer = banner.find('.banner-dots'),  // 导航小圆点的包含块
+            dotTpl = '<span></span>',  // 要插入的导航小圆点
+            dots,  // 导航小圆点集合
+            total = slides.length,  // slide总数
+            index = -1,  // slide索引
+            interval = 5000,  // 轮播间隔时间
+            timer = null;  // 定时器
+        // 一张图 不执行轮播
+        if (total == 1) {
+            next();
+            return;
+        }
+        // 根据slide个数添加导航小圆点
+        $.each(slides, function(i, el) {
+            dotContainer.append(dotTpl);
+        });
+        dots = dotContainer.find('span');
+        function show(i) {
+            var cur = slides.filter('.slide-active');
+            // 停掉所有slide动画序列
+            slides.stop(true, true); 
+            // 隐藏当前激活的slide
+            cur.removeClass('slide-active').fadeOut(600);
+            // 激活传入i对应的slide
+            slides.eq(i).addClass('slide-active').fadeIn(800);
+            // 激活slide对应的导航小圆点
+            dots && dots.removeClass('active').eq(i).addClass('active');
+        }
+        function prev() {
+            index--;
+            // 判断当前是不是第一个slide
+            index = index < 0 ? total - 1 : index;
+            // 激活对应的slide
+            show(index);
+        }
+        function next() {
+            index++;
+            // 判断当前是不是最后一个slide
+            index = index > total - 1 ? 0 : index;
+            // 激活对应的slide
+            show(index);
+        }
+        function autoPlay() {
+            // 停掉已有定时器
+            if (timer) clearInterval(timer);
+            // 开启定时器，定时滚动到下一张
+            timer = setInterval(function() {
+                next();
+            }, interval);
+        }
+        // 监听上一页、下一页、导航小圆点点击事件
+        banner.on('click', '.prev', function(e) {
+            prev();
+        }).on('click', '.next', function(e) {
+            next();
+        }).on('click', '.banner-dots span', function(e) {
+            // 如果对应的slide已经激活，return
+            if ($(this).hasClass('active')) return;
+            // 否则激活对应的slide
+            var i = $(this).index();
+            index = i;
+            show(i);
+        });
+        // 监听鼠标移入banner区域停止自动轮播
+        banner.on('mouseenter', function(e) {
+            if (timer) clearInterval(timer);
+        }).on('mouseleave', function(e) {
+            autoPlay();
+        });
+        
+        // 因为初始index为-1，调用next显示第一个slide，并启用自动轮播
+        next();
+        autoPlay();
+    })();
+    </script>
+</body>
+
+</html>

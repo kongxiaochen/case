@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<title>task22</title>
+	<meta charset="utf-8">
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+	box-sizing: border-box;
+}
+.root{
+	display:flex;
+	width:1000px;
+	height:300px;
+	border:1px solid #00CC66;
+	padding:20px;
+	margin:10px auto;
+    justify-content: space-between;
+    margin-top:50px;
+}
+.child1{
+	display:flex;
+	width:450px;
+	height:260px;
+	border:1px solid #00CCCC;
+	padding:20px;
+	justify-content:space-between;
+}
+.child2{
+	display:flex;
+	width:180px;
+	height:220px;
+	border:1px solid cornflowerblue;
+	padding:20px;
+	justify-content:space-between;
+}
+.child3{
+	/*display:flex;*/
+	width:60px;
+	height:180px;
+	border:1px solid #6600FF;
+	justify-content:space-between;
+}
+.choose{
+	margin-top: 20px;
+	 margin-left:900px;
+	 font-size: 40px;
+}
+.choose input{
+	height:60px;
+	width:60px;
+	border:1px solid cornflowerblue;
+	box-shadow:0 0 10px cornflowerblue;
+	border-radius: 29px;
+	margin-right:20px;
+	cursor:pointer;
+	background-color: #fff;
+
+}
+
+
+</style>
+</head>
+<body>
+	<div class="root">
+	  <div class="child1">
+         <div class="child2">
+             <div class="child3"></div>
+             <div class="child3"></div>
+          </div>
+         <div class="child2">
+             <div class="child3"></div>
+             <div class="child3"></div>
+         </div>
+       </div>
+      <div class="child1">
+         <div class="child2">
+             <div class="child3"></div>
+             <div class="child3"></div>
+             </div>
+         <div class="child2">
+             <div class="child3"></div>
+             <div class="child3"></div>
+             </div>
+		
+	</div>
+</div>
+	<div class="choose">
+	<input type="button" value="前序"/>
+	<input type="button" value="中序"/>
+	<input type="button" value="后序"/></div>
+
+<script type="text/javascript" src="task22.js"></script>
+
+
+</body>
+</html>

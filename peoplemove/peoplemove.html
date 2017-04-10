@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>peoplemove</title>
+<script language=javascript type=text/javascript>
+
+var n=1;
+function move()
+{
+	var mypeople=document.getElementById("people")
+	mypeople.src=((n++%4)+1)+".png";
+	var left=mypeople.style.left;
+	left=parseInt(left.substr(0,left.length-2));
+	mypeople.style.left=(left+50)+"px";
+
+	if(left==1000){
+		clearInterval(peoplemove);
+	}
+
+
+
+}
+
+var peoplemove=setInterval("move()",200);
+</script>
+
+</head>
+<body>
+<div>
+<img src="1.png" id="people" style="left:0px; position:absolute">
+</div>
+</body>
+</html> 

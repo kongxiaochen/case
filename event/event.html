@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script language=javascript type=text/javascript>
+
+function test()
+{
+   document.write(new Date());
+}
+function test1(e){
+	var x=e.clientX;
+	var y=e.clientY;
+	window.alert("x="+x+" y="+y);
+}
+function test2(){
+	window.alert("ok");
+}
+</script>
+
+</head>
+<body  style="background-color:silver " onMouseDown="test1(event)">
+<input type="button" value="点击显示当前时间" onclick="test()"/>
+</body>
+</html>

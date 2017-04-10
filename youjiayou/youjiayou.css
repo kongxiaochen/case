@@ -1,0 +1,142 @@
+body, td, th {
+    font-size:12px;
+    font-family:"\5FAE\8F6F\96C5\9ED1", "Microsoft YaHei", "Tahoma", "\5b8b\4f53", "sans-serif";
+}
+body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, p, pre, code, form, fieldset, legend, input, button, textarea, blockquote, table {
+    margin:0;
+    padding:0;
+}
+address, caption, cite, code, dfn, em, strong, th, var, optgroup, em, i {
+    font-style:normal;
+    font-weight:normal;
+}
+ul, ol {
+    list-style:none;
+}
+fieldset, img {
+    border:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    border:0
+}
+caption, th {
+    text-align:left;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size:100%;
+    font-weight:normal;
+    font-family:"\5FAE\8F6F\96C5\9ED1", "Microsoft YaHei", "Tahoma", sans-serif;
+}
+input, button, textarea, select, optgroup, option {
+    font-family:inherit;
+    font-size:inherit;
+    font-style:inherit;
+    font-weight:inherit;
+}
+input, button, textarea, select {
+    *font-size:100%;
+    vertical-align:middle;
+}
+pre {
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+a {
+    color:#00388A;
+    text-decoration:none;
+}
+a {
+    outline:none;
+}
+a:hover {
+    text-decoration:none;
+}
+#station{
+	padding:.4rem 1rem;
+	width:100%;
+	height:28px;
+	line-height: 28px;
+	font-size:1rem;
+	background-color: #fff;
+	margin:0 0 8px;
+	text-align:center;
+	display:-moz-box; /* Firefox */
+    display:-webkit-box; /* Safari and Chrome */
+    display:-ms-flexbox; /* Internet Explorer 10 */
+    display:box;
+}
+#station label{
+	position:relative;
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+}
+#class_select{
+    position:relative;
+    -moz-box-flex:3;
+    -webkit-box-flex:3;
+    box-flex:3;
+}
+#class_select:after{
+    content:' ';
+    position:absolute;
+    top:20%;
+    right:30px;
+    border:#c9c9c9 solid 2px;
+    border-left:0;
+    border-bottom:0;
+    width:7px;
+    height:7px;
+    -webkit-transform:rotate(135deg);
+    -moz-transform:rotate(135deg);
+    transform:rotate(135deg);
+}
+#show_dt{
+    height:28px;
+    display:inline-box;
+    color:#666;
+    line-height: 28px;
+    font-weight: bold;   /*400 等同于 normal，而 700 等同于 bold*/
+    width:98%;
+    padding-right:15px;
+    white-space: nowrap;  /*文本不换行*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position:relative;
+    z-index:99;
+}
+#show_dd{
+    background-color: #5d5d5d;
+    display:none;
+    position:absolute;
+    left:30px;
+    top:28px;
+    z-index:9;
+    border-radius:5px;
+    padding:0 5px;
+    width:320px;
+    text-align:center;
+    color:#fff;
+    height:20px;
+    line-height: 20px;
+    box-shadow:0 1px 4px rgba(0,0,0,.5);
+}
+#phone_test,#return_code{
+    width:100%;
+    height:50px;
+    background-color: #fff;
+}
+#phone_Num,#input_Code{
+    position:relative;
+    top:10px;
+    left:10px;
+    height:25px;
+    border:2px solid #ebebeb;
+}
+#get_Code{
+    float:right;
+    margin-top:10px;
+    margin-right:10px;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<meta charset="utf-8">
+<script type="text/javascript">
+	var text="cat,bat,sat,fat";
+	var pattern1=/.at/;
+	var pattern2=/.at/g;
+	var matches1=text.match(pattern1);
+	var matches2=pattern1.exec(text);
+	var matches3=text.match(pattern2);
+	var matches4=pattern2.exec(text);
+	console.log(matches1);
+	console.log(matches2);
+	console.log(matches3);
+	console.log(matches4);
+	console.log(matches1.index);
+
+
+
+</script>
+<body></body>
+</html>

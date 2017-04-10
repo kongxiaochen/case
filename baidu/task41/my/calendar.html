@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UI组件之日历组件（二）</title>
+    <meta charset="utf-8">
+<style type="text/css">
+*{
+	padding:0px;
+	margin:0px;
+	font-family: "微软雅黑";
+}
+#container{
+	width:350px;
+	margin:100px auto;
+	font-family: "微软雅黑";
+	text-align:center;
+}
+#mainDiv{
+	position:relative;
+}
+#show{
+    width:210px;
+    height:30px;
+}
+#calendarEle{
+	width:350px;
+	height:400px;
+	border:2px solid lightgrey;
+	position:absolute;
+	top:40px;
+}
+p{
+	background-color: #C81B01;
+	text-align:center;
+	padding:5px;
+}
+p #arrLeft{
+	float:left;
+}
+p #arrRight{
+	float:right;
+}
+</style>
+</head>
+
+<body>
+<div id="container">
+	<div id="mainDiv">
+		<input type="text" readonly="readonly" id="show"/>
+        <div id="calendarEle">
+        	<p>
+        	    <strong class="title"></strong>
+        		<strong id="arrLeft"><-</strong>
+        		<strong id="arrRight">-></strong>
+        	</p>
+        </div>
+	</div>
+</div> 
+<script type="text/javascript" src="../../../jquery-3.0.0.js"></script>  
+<script type="text/javascript" src="datePicker.js"></script>
+<script type="text/javascript">
+	var cal=new datePicker();
+</script>  
+</body>
+
+</html>

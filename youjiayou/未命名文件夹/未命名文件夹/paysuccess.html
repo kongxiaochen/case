@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>支付成功</title>
+    <meta name="viewport"
+          content=" width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: #ebebeb;
+            font-family: "PingFang SC", "微软雅黑";
+            /* height:100%; */
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            /* height: 500px; */
+            height:70%;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 10px;
+            position:relative;
+        }
+
+        .msg {
+            color: rgb(4, 190, 1);
+            font-size: 22px;
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 40px;
+            font-weight: bold;
+
+        }
+
+        .imgs {
+            width: 100%;
+           
+            overflow: hidden;
+            /*background:url(img/gas.jpg) repeat;*/
+           
+        }
+
+        label {
+            display: block;
+            color: #fff;
+            background-color: rgb(4, 190, 1);
+            margin: 30px 70px 130px 70px;
+            font-size: 16px;
+            text-align: center;
+            height: 36px;
+            border-radius: 5px;
+            line-height: 36px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="msg"><span>支付成功，点击完成返回</span></div>
+    <div class="imgs">
+        <img src="0.png" style="width:100%;height:auto;">
+        <div style="position:absolute; bottom:22px; right:18px">
+        <img src="1.png">
+        <span style="display:block; color:#fff; text-align:center;">优加油</span>
+        </div>
+    </div>
+</div>
+<label>完成<input type="button" class="finish" style="display:none" onclick="WeixinJSBridge.call('closeWindow');"></label>
+<script type="text/javascript">
+    var deviceHeight=window.screen.height;
+    
+	document.body.style.cssText='height:'+deviceHeight+'px'; 
+</script>
+</body>
+</html>
